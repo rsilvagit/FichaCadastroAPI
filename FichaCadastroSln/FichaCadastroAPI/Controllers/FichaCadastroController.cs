@@ -170,6 +170,7 @@ namespace FichaCadastroAPI.Controllers
         {
             try
             {
+                //validação id diferente de zero
                 if (id == 0)
                 {
                     return StatusCode(HttpStatusCode.NotFound.GetHashCode(), "Id está igual a zero");

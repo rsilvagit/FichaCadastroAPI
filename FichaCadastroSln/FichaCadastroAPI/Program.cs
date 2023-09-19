@@ -19,7 +19,15 @@ builder.Services
 //ConfigurationMapper
 builder.Services.AddAutoMapper(typeof(Program));
 
+//Configuração para deixar as rotas com letra minuscula
+builder.Services.AddRouting(options =>
+{
+    options.LowercaseUrls = true;
+    options.LowercaseQueryStrings = true;
+
+});
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
