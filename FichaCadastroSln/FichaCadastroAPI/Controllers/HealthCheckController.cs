@@ -1,20 +1,26 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using AutoMapper;
+using FichaCadastroAPI.DTO.Ficha;
+using FichaCadastroAPI.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace FichaCadastroAPI.Controllers
 {
-    [Route("api/controller")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class HealthCheckController:ControllerBase
+    public class HealthCheckController : ControllerBase
     {
         private readonly HealthCheckService healthCheckService;
 
         public HealthCheckController(HealthCheckService healthCheckService)
         {
-            this.healthCheckService = healthCheckService;
+           this.healthCheckService = healthCheckService;
         }
 
         [HttpGet(Name = "Get")]

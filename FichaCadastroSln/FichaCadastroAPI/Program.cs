@@ -5,6 +5,11 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//configurando appsettings
+builder.Configuration
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -28,10 +33,6 @@ builder.Services.AddRouting(options =>
     options.LowercaseQueryStrings = true;
 
 });
-//configurando appsettings
-builder.Configuration
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 //injeção dependencia healthcheck
 string nomeHealthCheckCustom = nameof(HealthCheckCustom);
