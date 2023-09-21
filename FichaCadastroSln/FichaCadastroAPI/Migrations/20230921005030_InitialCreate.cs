@@ -47,7 +47,7 @@ namespace FichaCadastroAPI.Migrations
                         column: x => x.FichaId,
                         principalTable: "Ficha",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

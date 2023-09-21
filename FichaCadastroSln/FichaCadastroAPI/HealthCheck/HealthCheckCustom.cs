@@ -1,4 +1,5 @@
 ﻿using FichaCadastroAPI.Model;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace FichaCadastroAPI.HealthCheck
@@ -16,7 +17,60 @@ namespace FichaCadastroAPI.HealthCheck
 
         public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
-            return await Task.FromResult(HealthCheckResult.Healthy("ok"));
+            bool comunicaoSQL = false;
+            bool healthyStatus = false;
+            HealthCheckResult healthy = default;
+            Exception? exHealthCheck = null;
+
+            Dictionary<string, object> data = new Dictionary<string, object>()
+            {
+                { 
+                    "detalhes-app", new {
+                                        ambiente = hostEnvironment.EnvironmentName, 
+                                        nomeApp = hostEnvironment.ApplicationName
+                                        }
+                    },
+                {
+                    "ultima-consulta", DateTime.Now
+                }
+
+            };
+            try
+            {
+                var returns = fichaCadastroContextDB.Database
+                    .SqlQueryRaw<int>("SELECT 1 AS HealthCheck")
+                    .ToList()
+                    .FirstOrDefault();
+
+                if(returns == 1)
+                {
+                    comunicaoSQL = true;
+                    var dataBancoDados = new
+                    {
+                        instanciaIdDoEf = fichaCadastroContextDB.ContextId,
+                        sqlComunicacaoSucesso = comunicaoSQL,
+                        connectionString = fichaCadastroContextDB.Database.GetConnectionString()
+
+                    };
+                    data.Add("informacaoDB", dataBancoDados);
+                    healthyStatus = true;
+                }
+
+
+            }
+            catch(Exception ex)
+            {
+                exHealthCheck = ex;
+            }
+            if (healthyStatus == true)
+            {
+                healthy = HealthCheckResult.Healthy("Tudo certo com a aplicação", data: data);
+            }
+            else
+            {
+                healthy = HealthCheckResult.Unhealthy("Serviço indisponivel.", data: data, exception: exHealthCheck);
+            }
+            return await Task.FromResult(healthy);
         }
     }
 }

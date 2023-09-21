@@ -1,5 +1,7 @@
 using FichaCadastroAPI.HealthCheck;
 using FichaCadastroAPI.Model;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
@@ -17,7 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-string connectionString = "Server=localhost;Database=FichaCadastro;Trusted_Connection=True;TrustServerCertificate=True;";
+string connectionString = "Server=DESKTOP-9HO92VC\\SQLEXPRESS;Database=FichaCadastro;Trusted_Connection=True;TrustServerCertificate=True;";
 
 builder.Services
        .AddDbContext<FichaCadastroContextDB>(options => 
@@ -55,5 +57,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//customização da response do healthcheck
+app.UseHealthChecks("/api/healthcheck", new HealthCheckOptions()
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+});
 
 app.Run();

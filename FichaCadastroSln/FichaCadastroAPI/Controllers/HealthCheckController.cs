@@ -26,7 +26,7 @@ namespace FichaCadastroAPI.Controllers
         [HttpGet(Name = "Get")]
         public async Task<ActionResult> GetAsync(CancellationToken token = default)
         {
-            HealthReport report = await this.healthCheckService.CheckHealthAsync();
+            HealthReport report = await this.healthCheckService.CheckHealthAsync(token);
             return await Task.FromResult(Ok(report));
         }
 

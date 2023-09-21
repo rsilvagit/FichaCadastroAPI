@@ -92,7 +92,7 @@ namespace FichaCadastroAPI.Migrations
                     b.HasOne("FichaCadastroAPI.Model.FichaModel", "Ficha")
                         .WithMany("DetalheModels")
                         .HasForeignKey("FichaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Ficha");

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FichaCadastroAPI.Migrations
 {
     [DbContext(typeof(FichaCadastroContextDB))]
-    [Migration("20230914004436_InitialCreate")]
+    [Migration("20230921005030_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -95,7 +95,7 @@ namespace FichaCadastroAPI.Migrations
                     b.HasOne("FichaCadastroAPI.Model.FichaModel", "Ficha")
                         .WithMany("DetalheModels")
                         .HasForeignKey("FichaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Ficha");
