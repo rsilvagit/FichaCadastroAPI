@@ -17,11 +17,17 @@ namespace FichaCadastroAPI.Controllers
     {
         private readonly IMapper _mapper;
         private readonly FichaCadastroContextDB _fichaCadastroContextDB;
+        private readonly ILogger<FichaCadastroController> _logger;
 
         public FichaCadastroController(IMapper mapper, FichaCadastroContextDB fichaCadastroContextDB)
         {
             _mapper = mapper;
             _fichaCadastroContextDB = fichaCadastroContextDB;
+        }
+
+        public FichaCadastroController(ILogger<FichaCadastroController> logger)
+        {
+            _logger = logger;
         }
 
         [HttpPost]
