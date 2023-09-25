@@ -18,17 +18,19 @@ namespace FichaCadastroAPI.Controllers
         private readonly IMapper _mapper;
         private readonly FichaCadastroContextDB _fichaCadastroContextDB;
         private readonly ILogger<FichaCadastroController> _logger;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public FichaCadastroController(IMapper mapper, FichaCadastroContextDB fichaCadastroContextDB)
+        public FichaCadastroController(IMapper mapper,
+                                       FichaCadastroContextDB fichaCadastroContextDB,
+                                       ILogger<FichaCadastroController> logger, 
+                                       IHttpContextAccessor httpContextAccessor)
         {
             _mapper = mapper;
             _fichaCadastroContextDB = fichaCadastroContextDB;
+            _logger = logger;
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        public FichaCadastroController(ILogger<FichaCadastroController> logger)
-        {
-            _logger = logger;
-        }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -38,6 +40,16 @@ namespace FichaCadastroAPI.Controllers
         {
             try
             {
+                //log 
+                _logger.LogCritical($"Dados {fichaCreateDTO.ToString()}");
+                var ip = _httpContextAccessor
+                                    .HttpContext!
+                                    .Connection!
+                                    .RemoteIpAddress!
+                                    .ToString();
+
+                _logger.LogWarning($"IP Requisição {ip}");
+
                 //validação se já existe o email no db
                 bool existeEmailInformado = _fichaCadastroContextDB
                                             .FichaModels

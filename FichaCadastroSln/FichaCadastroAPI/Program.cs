@@ -19,10 +19,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-string connectionString = "Server=DESKTOP-9HO92VC\\SQLEXPRESS;Database=FichaCadastro;Trusted_Connection=True;TrustServerCertificate=True;";
+builder.Services
+       .AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+var variavelAmbiente = builder.Environment.EnvironmentName;
+var diretorio = Directory.GetCurrentDirectory();
+
+builder.Configuration
+       .SetBasePath(diretorio)
+       .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+       .AddJsonFile($"appsettings.{variavelAmbiente}.json", optional: false, reloadOnChange: true);
+
+string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
 
 builder.Services
-       .AddDbContext<FichaCadastroContextDB>(options => 
+       .AddDbContext<FichaCadastroContextDB>(options =>
                                              options.UseSqlServer(connectionString));
 
 //ConfigurationMapper
