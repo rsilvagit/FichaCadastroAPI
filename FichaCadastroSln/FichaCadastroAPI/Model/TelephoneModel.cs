@@ -11,8 +11,9 @@ namespace FichaCadastroAPI.Model
         public string Ddd { get; set; }
         [Column(TypeName = "VARCHAR"), StringLength(100)]
         public string Number { get; set; }
-        public bool ative { get; set; }
+        public bool Ative { get; set; }
         [Required]
         public FichaModel Ficha { get; set; }
+        public int FichaId { get; set; }
     }
 }

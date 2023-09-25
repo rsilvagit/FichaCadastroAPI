@@ -19,6 +19,7 @@ namespace FichaCadastroAPI.Controllers
         private readonly FichaCadastroContextDB _fichaCadastroContextDB;
         private readonly ILogger<FichaCadastroController> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        
 
         public FichaCadastroController(IMapper mapper,
                                        FichaCadastroContextDB fichaCadastroContextDB,
@@ -40,7 +41,7 @@ namespace FichaCadastroAPI.Controllers
         {
             try
             {
-                //log 
+
                 _logger.LogCritical($"Dados {fichaCreateDTO.ToString()}");
                 var ip = _httpContextAccessor
                                     .HttpContext!
@@ -50,7 +51,6 @@ namespace FichaCadastroAPI.Controllers
 
                 _logger.LogWarning($"IP Requisição {ip}");
 
-                //validação se já existe o email no db
                 bool existeEmailInformado = _fichaCadastroContextDB
                                             .FichaModels
                                             .ToList()
@@ -75,6 +75,7 @@ namespace FichaCadastroAPI.Controllers
                 return StatusCode(HttpStatusCode.InternalServerError.GetHashCode(), ex);
             }
         }
+
 
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -211,5 +212,21 @@ namespace FichaCadastroAPI.Controllers
             }
         }
 
+        //[HttpPost]
+        //[ProducesResponseType(StatusCodes.Status201Created)]
+        //[ProducesResponseType(StatusCodes.Status409Conflict)]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //public ActionResult<TelephoneCreateDTO> Post([FromBody] TelephoneCreateDTO telephoneCreateDTO)
+        //{
+        //    TelephoneModel telephoneModel = _mapper.Map<TelephoneModel>(telephoneCreateDTO);
+
+        //    _fichaCadastroContextDB.TelephoneModels.Add(telephoneModel);
+        //    _fichaCadastroContextDB.SaveChanges();
+
+        //    TelephoneReadDTO telephoneReadDTO = _mapper.Map<TelephoneReadDTO>(telephoneModel);
+
+        //    return StatusCode(HttpStatusCode.Created.GetHashCode(), telephoneReadDTO);
+        //}
+        
     }
 }
