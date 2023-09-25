@@ -8,10 +8,11 @@ namespace FichaCadastroAPI.Model
     public class TelephoneModel:RelacionalBase
     {
         [Column(TypeName = "VARCHAR"), StringLength(100)]
-        public int Ddd { get; set; }
+        public string Ddd { get; set; }
         [Column(TypeName = "VARCHAR"), StringLength(100)]
-        public int Number { get; set; }
-
+        public string Number { get; set; }
         public bool ative { get; set; }
+        [Required]
+        public FichaModel Ficha { get; set; }
     }
 }

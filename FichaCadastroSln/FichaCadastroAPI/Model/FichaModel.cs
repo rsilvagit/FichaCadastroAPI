@@ -19,5 +19,6 @@ namespace FichaCadastroAPI.Model
         public DateTime DataNascimento { get; set; }
 
         public Collection<DetalheModel> DetalheModels { get; set; }
+        public Collection<TelephoneModel> TelephoneModels { get; set; }
     }
 }

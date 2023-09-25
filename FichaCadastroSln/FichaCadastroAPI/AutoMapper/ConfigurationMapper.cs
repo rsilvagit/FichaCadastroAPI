@@ -25,10 +25,17 @@ namespace FichaCadastroAPI.AutoMapper
 
             //origem ...destino
             CreateMap<FichaModel, FichaDetalhesReadDTO>()
-                .ForMember(destino => destino.Detalhes, origem => origem.MapFrom(dados =>dados.DetalheModels));
-
+                .ForMember(destino => destino.ContatenacaoNomeEmail,
+                           origem => origem.MapFrom(dados => $"{dados.Nome} - {dados.Email}"))
+                .ForMember(destino => destino.Detalhes, origem => origem.MapFrom(dados => dados.DetalheModels));
             //origem ... destino
             CreateMap<DetalheModel, DetalheReadDTO>();
+
+            //origem ... destino
+            CreateMap<TelephoneModel, TelephoneReadDTO>()
+                .ForMember(destino => destino.Contato,
+                           origem => origem.MapFrom(dados => $"{dados.Ddd} - {dados.Number}"));
+                
         }
     }
 }

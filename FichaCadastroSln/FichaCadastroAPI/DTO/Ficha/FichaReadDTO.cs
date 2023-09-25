@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public string Email { get; set; }
         public DateTime DataNascimento { get; set; }
+        public string ContatenacaoNomeEmail { get; set; }
     }
 }
