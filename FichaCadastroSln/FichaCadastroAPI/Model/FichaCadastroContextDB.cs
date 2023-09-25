@@ -10,7 +10,7 @@ namespace FichaCadastroAPI.Model
     {
         public DbSet<FichaModel> FichaModels { get; set; }
         public DbSet<DetalheModel> DetalheModels { get; set; }
-
+        public DbSet<TelephoneModel> TelephoneModels { get; set; }
         public FichaCadastroContextDB(DbContextOptions options) : base(options)
         {
         }
@@ -22,6 +22,12 @@ namespace FichaCadastroAPI.Model
                         .WithMany(w => w.DetalheModels)
                         .Metadata
                         .DeleteBehavior = DeleteBehavior.Restrict;//impede que os dados sejam apagados em cascata
+            
+            modelBuilder.Entity<TelephoneModel>()
+                        .HasOne(h => h.Ficha)
+                        .WithMany(w => w.TelephoneModels)
+                        .Metadata
+                        .DeleteBehavior = DeleteBehavior.Restrict;
 
             modelBuilder.Entity<DetalheModel>()
                         .Property(p => p.DataCadastro)
@@ -29,7 +35,10 @@ namespace FichaCadastroAPI.Model
 
             modelBuilder.Entity<FichaModel>()
                         .Property(p => p.DataCadastro)
-                        .HasDefaultValueSql("GETDATE()");            
+                        .HasDefaultValueSql("GETDATE()");
+            modelBuilder.Entity<TelephoneModel>()
+                        .Property(p => p.DataCadastro)
+                        .HasDefaultValueSql("GETDATE()");
 
             base.OnModelCreating(modelBuilder);
         }
