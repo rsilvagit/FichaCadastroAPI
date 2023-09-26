@@ -1,4 +1,6 @@
-﻿namespace FichaCadastroAPI.DTO.Ficha
+﻿using FichaCadastroAPI.DTO.Detalhe;
+
+namespace FichaCadastroAPI.DTO.Ficha
 {
     public class FichaDetalhesReadDTO:FichaReadDTO
     {

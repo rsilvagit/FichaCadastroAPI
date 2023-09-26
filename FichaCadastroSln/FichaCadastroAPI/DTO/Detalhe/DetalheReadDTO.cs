@@ -1,6 +1,6 @@
 ﻿using FichaCadastroAPI.Enumerators;
 
-namespace FichaCadastroAPI.DTO.Ficha
+namespace FichaCadastroAPI.DTO.Detalhe
 {
     public class DetalheReadDTO
     {
