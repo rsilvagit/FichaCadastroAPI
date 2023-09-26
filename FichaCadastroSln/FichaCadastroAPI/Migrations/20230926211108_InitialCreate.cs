@@ -80,8 +80,12 @@ namespace FichaCadastroAPI.Migrations
                 columns: new[] { "Id", "DataCadastro", "DataNascimento", "Email", "Nome" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 9, 25, 20, 15, 54, 562, DateTimeKind.Local).AddTicks(9571), new DateTime(1998, 9, 25, 20, 15, 54, 562, DateTimeKind.Local).AddTicks(9590), "joao@example.com", "João" },
-                    { 2, new DateTime(2023, 9, 25, 20, 15, 54, 562, DateTimeKind.Local).AddTicks(9600), new DateTime(1978, 9, 25, 20, 15, 54, 562, DateTimeKind.Local).AddTicks(9603), "maria@example.com", "Maria" }
+                    { 1, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(2682), new DateTime(1998, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(2702), "joao@example.com", "João" },
+                    { 2, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(2718), new DateTime(1978, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(2722), "maria@example.com", "Maria" },
+                    { 3, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(2729), new DateTime(1998, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(2734), "joaquim@example.com", "Joaquim" },
+                    { 4, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(2740), new DateTime(1938, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(2744), "mario@example.com", "Mario" },
+                    { 5, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(2751), new DateTime(2008, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(2756), "junior@example.com", "Junior" },
+                    { 6, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(2762), new DateTime(1998, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(2767), "marina@example.com", "Marina" }
                 });
 
             migrationBuilder.InsertData(
@@ -89,8 +93,14 @@ namespace FichaCadastroAPI.Migrations
                 columns: new[] { "Id", "DataCadastro", "Feedback", "FichaId", "Nota", "Situacao" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 9, 25, 20, 15, 54, 563, DateTimeKind.Local).AddTicks(380), "Bom trabalho!", 1, 5, true },
-                    { 2, new DateTime(2023, 9, 25, 20, 15, 54, 563, DateTimeKind.Local).AddTicks(393), "Precisa melhorar", 2, 3, false }
+                    { 1, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3328), "Bom trabalho!", 5, 5, true },
+                    { 2, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3335), "Precisa melhorar", 2, 3, false },
+                    { 3, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3339), "Bom trabalho!", 3, 5, true },
+                    { 4, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3342), "Precisa melhorar", 2, 3, false },
+                    { 5, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3347), "Bom trabalho!", 1, 5, true },
+                    { 6, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3350), "Precisa melhorar", 3, 3, false },
+                    { 7, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3353), "Bom trabalho!", 1, 5, true },
+                    { 8, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3356), "Precisa melhorar", 4, 3, false }
                 });
 
             migrationBuilder.InsertData(
@@ -98,8 +108,14 @@ namespace FichaCadastroAPI.Migrations
                 columns: new[] { "Id", "Ative", "DataCadastro", "Ddd", "FichaId", "Number" },
                 values: new object[,]
                 {
-                    { 1, true, new DateTime(2023, 9, 25, 20, 15, 54, 563, DateTimeKind.Local).AddTicks(445), "123", 1, "555-1234" },
-                    { 2, true, new DateTime(2023, 9, 25, 20, 15, 54, 563, DateTimeKind.Local).AddTicks(450), "456", 2, "555-5678" }
+                    { 1, true, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3408), "123", 1, "555-1234" },
+                    { 2, true, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3413), "456", 2, "555-5678" },
+                    { 3, true, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3416), "123", 5, "555-1234" },
+                    { 4, true, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3419), "456", 4, "555-5578" },
+                    { 5, true, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3422), "123", 1, "555-1234" },
+                    { 6, true, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3425), "456", 3, "555-5678" },
+                    { 7, true, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3427), "123", 1, "555-1004" },
+                    { 8, true, new DateTime(2023, 9, 26, 18, 11, 8, 129, DateTimeKind.Local).AddTicks(3430), "456", 2, "555-5008" }
                 });
 
             migrationBuilder.CreateIndex(

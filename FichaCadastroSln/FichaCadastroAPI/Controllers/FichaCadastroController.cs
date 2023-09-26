@@ -54,7 +54,7 @@ namespace FichaCadastroAPI.Controllers
                 bool existeEmailInformado = _fichaCadastroContextDB
                                             .FichaModels
                                             .ToList()
-                                            .Exists(exists => exists.Email == fichaCreateDTO.EmailInformado);
+                                            .Exists(exists => exists.Email == fichaCreateDTO.Email);
 
                 if (existeEmailInformado)
                 {

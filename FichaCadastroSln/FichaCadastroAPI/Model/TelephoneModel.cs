@@ -14,7 +14,7 @@ namespace FichaCadastroAPI.Model
         public bool Ative { get; set; }
         [Required]
         public FichaModel Ficha { get; set; }
-        [Key]
+        
         public int FichaId { get; set; }
     }
 }

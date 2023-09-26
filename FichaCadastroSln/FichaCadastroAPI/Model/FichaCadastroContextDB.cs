@@ -60,8 +60,40 @@ namespace FichaCadastroAPI.Model
                     Nome = "Maria",
                     Email = "maria@example.com",
                     DataNascimento = DateTime.Now.AddYears(-45),
+                },
+                new FichaModel
+                {
+                    Id = 3,
+                    DataCadastro = DateTime.Now,
+                    Nome = "Joaquim",
+                    Email = "joaquim@example.com",
+                    DataNascimento = DateTime.Now.AddYears(-25),
+                },
+                new FichaModel
+                {
+                    Id = 4,
+                    DataCadastro = DateTime.Now,
+                    Nome = "Mario",
+                    Email = "mario@example.com",
+                    DataNascimento = DateTime.Now.AddYears(-85),
+                },
+                new FichaModel
+                {
+                    Id = 5,
+                    DataCadastro = DateTime.Now,
+                    Nome = "Junior",
+                    Email = "junior@example.com",
+                    DataNascimento = DateTime.Now.AddYears(-15),
+                },
+                new FichaModel
+                {
+                    Id = 6,
+                    DataCadastro = DateTime.Now,
+                    Nome = "Marina",
+                    Email = "marina@example.com",
+                    DataNascimento = DateTime.Now.AddYears(-25),
                 }
-                
+
             );
 
             //Configurando a entidade DetalheModel
@@ -73,7 +105,7 @@ namespace FichaCadastroAPI.Model
                     Feedback = "Bom trabalho!",
                     Nota = NotasEnum.Cinco,
                     Situacao = true,
-                    FichaId = 1 // Associando à FichaModel correspondente
+                    FichaId = 5 // Associando à FichaModel correspondente
                 },
                 new DetalheModel
                 {
@@ -83,6 +115,60 @@ namespace FichaCadastroAPI.Model
                     Nota = NotasEnum.Tres,
                     Situacao = false,
                     FichaId = 2 // Associando à FichaModel correspondente
+                },
+                new DetalheModel
+                {
+                    Id = 3,
+                    DataCadastro = DateTime.Now,
+                    Feedback = "Bom trabalho!",
+                    Nota = NotasEnum.Cinco,
+                    Situacao = true,
+                    FichaId = 3 // Associando à FichaModel correspondente
+                },
+                new DetalheModel
+                {
+                    Id = 4,
+                    DataCadastro = DateTime.Now,
+                    Feedback = "Precisa melhorar",
+                    Nota = NotasEnum.Tres,
+                    Situacao = false,
+                    FichaId = 2 // Associando à FichaModel correspondente
+                },
+                new DetalheModel
+                {
+                    Id = 5,
+                    DataCadastro = DateTime.Now,
+                    Feedback = "Bom trabalho!",
+                    Nota = NotasEnum.Cinco,
+                    Situacao = true,
+                    FichaId = 1 // Associando à FichaModel correspondente
+                },
+                new DetalheModel
+                {
+                    Id = 6,
+                    DataCadastro = DateTime.Now,
+                    Feedback = "Precisa melhorar",
+                    Nota = NotasEnum.Tres,
+                    Situacao = false,
+                    FichaId = 3 // Associando à FichaModel correspondente
+                },
+                new DetalheModel
+                {
+                    Id = 7,
+                    DataCadastro = DateTime.Now,
+                    Feedback = "Bom trabalho!",
+                    Nota = NotasEnum.Cinco,
+                    Situacao = true,
+                    FichaId = 1 // Associando à FichaModel correspondente
+                },
+                new DetalheModel
+                {
+                    Id = 8,
+                    DataCadastro = DateTime.Now,
+                    Feedback = "Precisa melhorar",
+                    Nota = NotasEnum.Tres,
+                    Situacao = false,
+                    FichaId = 4 // Associando à FichaModel correspondente
                 }
 
             );
@@ -103,6 +189,60 @@ namespace FichaCadastroAPI.Model
                     DataCadastro = DateTime.Now,
                     Ddd = "456",
                     Number = "555-5678",
+                    Ative = true,
+                    FichaId = 2 // Associando à FichaModel correspondente
+                },
+                new TelephoneModel
+                {
+                    Id = 3,
+                    DataCadastro = DateTime.Now,
+                    Ddd = "123",
+                    Number = "555-1234",
+                    Ative = true,
+                    FichaId = 5,  // Associando à FichaModel correspondente
+                },
+                new TelephoneModel
+                {
+                    Id = 4,
+                    DataCadastro = DateTime.Now,
+                    Ddd = "456",
+                    Number = "555-5578",
+                    Ative = true,
+                    FichaId = 4 // Associando à FichaModel correspondente
+                },
+                new TelephoneModel
+                {
+                    Id = 5,
+                    DataCadastro = DateTime.Now,
+                    Ddd = "123",
+                    Number = "555-1234",
+                    Ative = true,
+                    FichaId = 1,  // Associando à FichaModel correspondente
+                },
+                new TelephoneModel
+                {
+                    Id = 6,
+                    DataCadastro = DateTime.Now,
+                    Ddd = "456",
+                    Number = "555-5678",
+                    Ative = true,
+                    FichaId = 3 // Associando à FichaModel correspondente
+                },
+                new TelephoneModel
+                {
+                    Id = 7,
+                    DataCadastro = DateTime.Now,
+                    Ddd = "123",
+                    Number = "555-1004",
+                    Ative = true,
+                    FichaId = 1,  // Associando à FichaModel correspondente
+                },
+                new TelephoneModel
+                {
+                    Id = 8,
+                    DataCadastro = DateTime.Now,
+                    Ddd = "456",
+                    Number = "555-5008",
                     Ative = true,
                     FichaId = 2 // Associando à FichaModel correspondente
                 }
