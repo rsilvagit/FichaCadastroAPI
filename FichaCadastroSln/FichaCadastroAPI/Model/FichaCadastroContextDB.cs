@@ -43,24 +43,7 @@ namespace FichaCadastroAPI.Model
                         .Property(p => p.DataCadastro)
                         .HasDefaultValueSql("GETDATE()");
 
-            //modelBuilder.Entity<FichaModel>()
-            //   .HasData(new FichaModel
-            //   {
-            //       Id = 1,
-            //       DataCadastro = DateTime.Now,
-            //       DataNascimento = DateTime.Now,
-            //       Email = "tafusam@email.com.br",
-            //       Nome = "teste umes"
-            //   },
-            //   new FichaModel
-            //   {
-            //       Id = 2,
-            //       DataCadastro = DateTime.Now,
-            //       DataNascimento = DateTime.Now.AddYears(-30),
-            //       Email = "paranguarik@email.com.br",
-            //       Nome = "teste dois"
-            //   });
-            // Configurando a entidade FichaModel
+            
             modelBuilder.Entity<FichaModel>().HasData(
                 new FichaModel
                 {
