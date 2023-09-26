@@ -212,21 +212,7 @@ namespace FichaCadastroAPI.Controllers
             }
         }
 
-        [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status409Conflict)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<TelephoneReadDTO> Post([FromBody] TelephoneCreateDTO telephoneCreateDTO)
-        {
-            TelephoneModel telephoneModel = _mapper.Map<TelephoneModel>(telephoneCreateDTO);
 
-            _fichaCadastroContextDB.TelephoneModels.Add(telephoneModel);
-            _fichaCadastroContextDB.SaveChanges();
-
-            TelephoneReadDTO telephoneReadDTO = _mapper.Map<TelephoneReadDTO>(telephoneModel);
-
-            return StatusCode(HttpStatusCode.Created.GetHashCode(), telephoneReadDTO);
-        }
 
     }
 }
