@@ -41,7 +41,9 @@ namespace FichaCadastroAPI.AutoMapper
             //origem ... destino
             CreateMap<TelephoneModel, TelephoneReadDTO>()
                 .ForMember(destino => destino.Contato,
-                           origem => origem.MapFrom(dados => $"{dados.Ddd} - {dados.Number}"));
+                           origem => origem.MapFrom(dados => $"{dados.Ddd} - {dados.Number}"))
+                .ForMember(destino => destino.ative,
+                      origem => origem.MapFrom(dados => dados.Ative));
             //origem ... destino
             CreateMap<TelephoneUpdateDTO,TelephoneModel>();
                 
