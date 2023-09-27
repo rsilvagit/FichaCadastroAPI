@@ -1,6 +1,6 @@
 ﻿namespace FichaCadastroAPI.DTO.Ficha
 {
-    public class FichaTelephoneReadDTO:FichaReadDTO
+    public class FichaTelephoneReadDTO:TelephoneReadDTO
     {
         public List<TelephoneReadDTO>? ListTelephones { get; set; }
     }

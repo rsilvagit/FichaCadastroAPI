@@ -180,6 +180,7 @@ namespace FichaCadastroAPI.Controllers
                 return StatusCode(HttpStatusCode.InternalServerError.GetHashCode(), ex);
             }
         }
+        
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

@@ -133,26 +133,63 @@ namespace FichaCadastroAPI.Controllers
             }
         }
 
+        //[HttpGet]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //public ActionResult<IEnumerable<FichaTelephoneReadDTO>> Get([FromQuery] string? FichaId)
+        //{
+        //    try
+        //    {
+        //        List<TelephoneModel>? telephonesModel;
+
+        //        //validação
+
+
+        //            telephonesModel = _fichaCadastroContextDB
+        //                                            .TelephoneModels
+        //                                            .Include(i => i.Ficha)
+        //                                            .ToList();
+
+
+        //        IEnumerable<FichaTelephoneReadDTO> telephoneReadDTO = _mapper.Map<IEnumerable<FichaTelephoneReadDTO>>(telephonesModel);
+
+        //        return StatusCode(HttpStatusCode.OK.GetHashCode(), telephoneReadDTO);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(HttpStatusCode.InternalServerError.GetHashCode(), ex);
+        //    }
+        //}
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<IEnumerable<FichaTelephoneReadDTO>> Get([FromQuery] int? FichaId)
+        public ActionResult<IEnumerable<FichaTelephoneReadDTO>> GetFichaTelefone([FromQuery] string? email)
         {
             try
             {
-                List<TelephoneModel>? telephonesModel;
+                List<FichaModel>? fichasModel;
 
                 //validação
-               
-               
-                    telephonesModel = _fichaCadastroContextDB
-                                                    .TelephoneModels
+                if (email == null || email == "")
+                {
+                    fichasModel = _fichaCadastroContextDB
+                                    .FichaModels
+                                    .Include(i => i.TelephoneModels)
+                                    .ToList();
+                }
+                else
+                {
+                    fichasModel = _fichaCadastroContextDB
+                                                    .FichaModels
+                                                    .Include(i => i.TelephoneModels)
+                                                    .Where(w => w.Email.Contains(email.ToLower()))
                                                     .ToList();
-                
+                }
 
-                IEnumerable<FichaTelephoneReadDTO> fichaTelephoneReadDTO = _mapper.Map<IEnumerable<FichaTelephoneReadDTO>>(telephonesModel);
+                IEnumerable<FichaTelephoneReadDTO> fichasReadDTO = _mapper.Map<IEnumerable<FichaTelephoneReadDTO>>(fichasModel);
 
-                return StatusCode(HttpStatusCode.OK.GetHashCode(), fichaTelephoneReadDTO);
+                return StatusCode(HttpStatusCode.OK.GetHashCode(), fichasReadDTO);
             }
             catch (Exception ex)
             {
